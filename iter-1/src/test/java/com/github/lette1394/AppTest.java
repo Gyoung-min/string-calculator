@@ -1,12 +1,13 @@
 package com.github.lette1394;
 
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class AppTest {
   @Test
-  public void shouldAnswerWithTrue() {
-    assertTrue(true);
+  public void test() {
+    assertThat(1, is(1));
   }
 }
