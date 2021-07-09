@@ -1,29 +1,23 @@
 package com.github.lette1394;
 
 
-
 import java.util.Scanner;
 
 public class App {
   public static void main(String[] args) {
-    final String N = "10";
-    final String M = "89";
-    final String K = "1";
+    final String[] expression;
+    final long number1;
+    final long number2;
+    final String sum;
     final Scanner sc = new Scanner(System.in);
+
     String add = sc.nextLine();
 
-    if (add.equals("2+3")) {
-      System.out.println(5);
-    }
-    if (add.equals("1+2")) {
-      System.out.println(3);
-    }
+    expression = add.split("\\+");
+    number1 = Long.parseLong(expression[0]);
+    number2 = Long.parseLong(expression[1]);
+    sum = String.valueOf(number1 + number2);
 
-    if (add.equals("N+M")) {
-      System.out.println("99");
-    }
-    if (add.equals("N+M+K")) {
-      System.out.println("100");
-    }
+    System.out.println(sum);
   }
 }
