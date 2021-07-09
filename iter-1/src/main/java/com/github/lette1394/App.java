@@ -1,6 +1,7 @@
 package com.github.lette1394;
 
 
+
 import java.util.Scanner;
 
 public class App {
