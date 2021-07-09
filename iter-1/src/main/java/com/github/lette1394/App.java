@@ -18,6 +18,7 @@ public class App {
     if (add.equals("1+2")) {
       System.out.println(3);
     }
+
     if (add.equals("N+M")) {
       System.out.println("99");
     }
