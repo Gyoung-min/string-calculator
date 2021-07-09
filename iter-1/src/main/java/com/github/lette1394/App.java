@@ -13,10 +13,17 @@ public class App {
     final String add = sc.nextLine();
 
     final List<String> expression = new ArrayList<>(Arrays.asList(add.split("\\+")));
-    final long leftOperand = Long.parseLong(expression.get(0));
-    final long rightOperand = Long.parseLong(expression.get(1));
-    final String sum = String.valueOf(leftOperand + rightOperand);
+    final long Operand1 = Long.parseLong(expression.get(0));
+    final long Operand2 = Long.parseLong(expression.get(1));
+    final long Operand3 = Long.parseLong(expression.get(2));
+    if(expression.size()==2) {
+      final String sum = String.valueOf(Operand1 + Operand2);
+      System.out.println(sum);
+    }
+    if(expression.size()==3){
+      final String sum = String.valueOf(Operand1 + Operand2+Operand3);
+      System.out.println(sum);
+    }
 
-    System.out.println(sum);
   }
 }
