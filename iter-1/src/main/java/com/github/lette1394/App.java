@@ -12,6 +12,7 @@ public class App {
     final Scanner sc = new Scanner(System.in);
     final String add = sc.nextLine();
 
+
     final List<String> expression = new ArrayList<>(Arrays.asList(add.split("\\+")));
     final long Operand1 = Long.parseLong(expression.get(0));
     final long Operand2 = Long.parseLong(expression.get(1));
@@ -24,6 +25,15 @@ public class App {
       final String sum = String.valueOf(Operand1 + Operand2+Operand3);
       System.out.println(sum);
     }
+
+
+
+    final List<String> expression = new ArrayList<>(Arrays.asList(add.split("\\+")));
+    final long leftOperand = Long.parseLong(expression.get(0));
+    final long rightOperand = Long.parseLong(expression.get(1));
+    final String sum = String.valueOf(leftOperand + rightOperand);
+
+    System.out.println(sum);
 
   }
 }
