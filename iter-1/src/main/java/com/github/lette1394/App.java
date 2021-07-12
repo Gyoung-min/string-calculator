@@ -15,7 +15,6 @@ public class App {
 
     final List<String> expression = new ArrayList<>(Arrays.asList(getOperator.split("\\+")));
 
-
     long sum = 0;
 
     for (int i = 0; i < expression.size(); i++) {
@@ -25,5 +24,6 @@ public class App {
     }
 
     System.out.println(sum);
+
   }
 }
