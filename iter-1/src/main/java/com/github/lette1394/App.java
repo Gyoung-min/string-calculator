@@ -14,17 +14,16 @@ public class App {
     final String getOperator = sc.nextLine();
 
     final List<String> expression = new ArrayList<>(Arrays.asList(getOperator.split("\\+")));
-    final long operand1 = Long.parseLong(expression.get(0));
-    final long operand2 = Long.parseLong(expression.get(1));
-    final long operand3 = Long.parseLong(expression.get(2));
 
-    if (expression.size() == 2) {
-      final String sum = String.valueOf(operand1 + operand2);
-      System.out.println(sum);
+
+    long sum = 0;
+
+    for (int i = 0; i < expression.size(); i++) {
+
+      sum += Long.parseLong(expression.get(i));
+
     }
-    if (expression.size() == 3) {
-      final String sum = String.valueOf(operand1 + operand2 + operand3);
-      System.out.println(sum);
-    }
+
+    System.out.println(sum);
   }
 }
