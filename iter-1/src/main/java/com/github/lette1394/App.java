@@ -16,6 +16,7 @@ public class App {
 
     final String getOperator = sc.nextLine();
 
+
     if (getOperator.contains("I") || getOperator.contains("V") || getOperator.contains("X") || getOperator.contains("L") || getOperator.contains("C") || getOperator.contains("D") || getOperator.contains("M")) {
 
       romanNumberOperate(getOperator);
