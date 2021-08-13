@@ -9,8 +9,8 @@ public class App {
 
   public static void main(String[] args) {
 
-
     long sum = 0;
+    long romanNumberSum = 0;
 
     final Scanner sc = new Scanner(System.in);
 
@@ -18,75 +18,65 @@ public class App {
 
     if (getOperator.contains("I") || getOperator.contains("V") || getOperator.contains("X") || getOperator.contains("L") || getOperator.contains("C") || getOperator.contains("D") || getOperator.contains("M")) {
 
-      romanNumberOperate(getOperator);
+      romanNumberSum = romanNumberOperate(getOperator);
 
-    } else {
+    }
+    final String integerOperator = removeRomanNumber(getOperator);
 
-      final List<String> expression = new ArrayList<>(Arrays.asList(getOperator.split("\\+")));
+    final List<String> expression = new ArrayList<>(Arrays.asList(integerOperator.split("\\+")));
 
+    for (int i = 0; i < expression.size(); i++) {
 
-      for (int i = 0; i < expression.size(); i++) {
-
+      if (!expression.get(i).equals("")) {
 
         sum += Long.parseLong(expression.get(i));
 
       }
-
-
-      System.out.println(sum);
     }
+    System.out.println(sum + romanNumberSum);
   }
 
-  private static void romanNumberOperate(String getOperator) {
+  private static String removeRomanNumber(String getOperator) {
 
-    long sum = 0;
+    String integerOperator = getOperator.replace("I", "")
+      .replace("V", "")
+      .replace("X", "")
+      .replace("L", "")
+      .replace("C", "")
+      .replace("D", "")
+      .replace("M", "");
+    return integerOperator;
+  }
 
-
+  private static long romanNumberOperate(String getOperator) {
+    long romanNumberSum = 0;
     final List<String> expression = new ArrayList<>(Arrays.asList(getOperator.split("\\+")));
 
     for (int i = 0; i < expression.size(); i++) {
 
       if (expression.get(i).equals("I")) {
-
-        sum += 1L;
-
+        romanNumberSum += 1L;
       }
       if (expression.get(i).equals("V")) {
-
-        sum += 5L;
-
+        romanNumberSum += 5L;
       }
       if (expression.get(i).equals("X")) {
-
-        sum += 10L;
-
+        romanNumberSum += 10L;
       }
       if (expression.get(i).equals("L")) {
-
-        sum += 50L;
-
+        romanNumberSum += 50L;
       }
       if (expression.get(i).equals("C")) {
-
-        sum += 100L;
-
+        romanNumberSum += 100L;
       }
       if (expression.get(i).equals("D")) {
-
-        sum += 500L;
-
+        romanNumberSum += 500L;
       }
       if (expression.get(i).equals("M")) {
-
-        sum += 1000L;
-
+        romanNumberSum += 1000L;
       }
-
     }
-    System.out.println(sum);
-
+    return romanNumberSum;
   }
-
-
 }
 
