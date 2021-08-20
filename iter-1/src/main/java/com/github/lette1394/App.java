@@ -21,6 +21,7 @@ public class App {
       romanNumberSum = romanNumberOperate(getOperator);
 
     }
+
     final String integerOperator = removeRomanNumber(getOperator);
 
     final List<String> expression = new ArrayList<>(Arrays.asList(integerOperator.split("\\+")));
