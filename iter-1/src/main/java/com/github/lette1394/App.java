@@ -6,78 +6,70 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
+  private static long romanNumberSum = 0;
+  private static long decimalNumberSum = 0;
+  private static long octalNumberSum = 0;
 
   public static void main(String[] args) {
 
-    long sum = 0;
-    long romanNumberSum = 0;
+    final Scanner get = new Scanner(System.in);
+    final String getOperator = get.next();
 
-    final Scanner sc = new Scanner(System.in);
-
-    final String getOperator = sc.nextLine();
-
-    if (getOperator.contains("I") || getOperator.contains("V") || getOperator.contains("X") || getOperator.contains("L") || getOperator.contains("C") || getOperator.contains("D") || getOperator.contains("M")) {
-
-      romanNumberSum = romanNumberOperate(getOperator);
-
-    }
-
-    final String integerOperator = removeRomanNumber(getOperator);
-
-    final List<String> expression = new ArrayList<>(Arrays.asList(integerOperator.split("\\+")));
-
-    for (int i = 0; i < expression.size(); i++) {
-
-      if (!expression.get(i).equals("")) {
-
-        sum += Long.parseLong(expression.get(i));
-
-      }
-    }
-    System.out.println(sum + romanNumberSum);
-  }
-
-  private static String removeRomanNumber(String getOperator) {
-
-    String integerOperator = getOperator.replace("I", "")
-      .replace("V", "")
-      .replace("X", "")
-      .replace("L", "")
-      .replace("C", "")
-      .replace("D", "")
-      .replace("M", "");
-    return integerOperator;
-  }
-
-  private static long romanNumberOperate(String getOperator) {
-    long romanNumberSum = 0;
     final List<String> expression = new ArrayList<>(Arrays.asList(getOperator.split("\\+")));
 
     for (int i = 0; i < expression.size(); i++) {
 
-      if (expression.get(i).equals("I")) {
-        romanNumberSum += 1L;
+      if (expression.get(i).contains("I") || expression.get(i).contains("V") || expression.get(i).contains("X") || expression.get(i).contains("L") || expression.get(i).contains("C") || expression.get(i).contains("D") || expression.get(i).contains("M")) {
+        romanNumberOperate(expression.get(i));
       }
-      if (expression.get(i).equals("V")) {
-        romanNumberSum += 5L;
+      if (expression.get(i).contains("(8)")) {
+        octalNumberOperate(expression.get(i));
       }
-      if (expression.get(i).equals("X")) {
-        romanNumberSum += 10L;
-      }
-      if (expression.get(i).equals("L")) {
-        romanNumberSum += 50L;
-      }
-      if (expression.get(i).equals("C")) {
-        romanNumberSum += 100L;
-      }
-      if (expression.get(i).equals("D")) {
-        romanNumberSum += 500L;
-      }
-      if (expression.get(i).equals("M")) {
-        romanNumberSum += 1000L;
+      if (expression.get(i).contains("(10)")) {
+        decimalNumberSumOperate(expression.get(i));
       }
     }
-    return romanNumberSum;
+    System.out.println(romanNumberSum + decimalNumberSum + octalNumberSum);
+  }
+
+  private static void decimalNumberSumOperate(String decimalNumber) {
+
+    String number = decimalNumber.replace("(10)", "");
+
+    decimalNumberSum += Long.parseLong(number);
+
+  }
+
+  private static void octalNumberOperate(String octalNumber) {
+
+    String number = octalNumber.replace("(8)", "");
+    long octalLongNumber = Integer.valueOf(number, 8);
+    octalNumberSum += octalLongNumber;
+  }
+
+  private static void romanNumberOperate(String romanNum) {
+
+    if (romanNum.equals("I")) {
+      romanNumberSum += 1L;
+    }
+    if (romanNum.equals("V")) {
+      romanNumberSum += 5L;
+    }
+    if (romanNum.equals("X")) {
+      romanNumberSum += 10L;
+    }
+    if (romanNum.equals("L")) {
+      romanNumberSum += 50L;
+    }
+    if (romanNum.equals("C")) {
+      romanNumberSum += 100L;
+    }
+    if (romanNum.equals("D")) {
+      romanNumberSum += 500L;
+    }
+    if (romanNum.equals("M")) {
+      romanNumberSum += 1000L;
+    }
   }
 }
 
