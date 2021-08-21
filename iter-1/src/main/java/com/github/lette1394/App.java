@@ -9,6 +9,7 @@ public class App {
   private static long romanNumberSum = 0;
   private static long decimalNumberSum = 0;
   private static long octalNumberSum = 0;
+  private static long binaryNumberSum = 0;
 
   public static void main(String[] args) {
 
@@ -28,8 +29,17 @@ public class App {
       if (expression.get(i).contains("(10)")) {
         decimalNumberSumOperate(expression.get(i));
       }
+      if(expression.get(i).contains("(2)")){
+        binaryNumberOperate(expression.get(i));
+      }
     }
-    System.out.println(romanNumberSum + decimalNumberSum + octalNumberSum);
+    System.out.println(romanNumberSum + decimalNumberSum + octalNumberSum + binaryNumberSum);
+  }
+  private static void binaryNumberOperate(String binaryNumber) {
+
+    String number = binaryNumber.replace("(2)", "");
+    long binaryLongNumber = Integer.valueOf(number, 2);
+    binaryNumberSum += binaryLongNumber;
   }
 
   private static void decimalNumberSumOperate(String decimalNumber) {
