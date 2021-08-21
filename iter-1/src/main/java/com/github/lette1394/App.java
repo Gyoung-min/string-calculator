@@ -35,7 +35,6 @@ public class App {
   private static void decimalNumberSumOperate(String decimalNumber) {
 
     String number = decimalNumber.replace("(10)", "");
-
     decimalNumberSum += Long.parseLong(number);
 
   }
