@@ -22,19 +22,25 @@ public class App {
 
       if (expression.get(i).contains("I") || expression.get(i).contains("V") || expression.get(i).contains("X") || expression.get(i).contains("L") || expression.get(i).contains("C") || expression.get(i).contains("D") || expression.get(i).contains("M")) {
         romanNumberOperate(expression.get(i));
-      }
-      if (expression.get(i).contains("(8)")) {
+      } else if (expression.get(i).contains("(8)")) {
         octalNumberOperate(expression.get(i));
-      }
-      if (expression.get(i).contains("(10)")) {
+      } else if (expression.get(i).contains("(10)")) {
         decimalNumberSumOperate(expression.get(i));
-      }
-      if(expression.get(i).contains("(2)")){
+      } else if (expression.get(i).contains("(2)")) {
         binaryNumberOperate(expression.get(i));
+      } else {
+        numberSumOperate(expression.get(i));
       }
     }
     System.out.println(romanNumberSum + decimalNumberSum + octalNumberSum + binaryNumberSum);
   }
+
+  private static void numberSumOperate(String number) {
+
+    long longNumber = Long.parseLong(number);
+    binaryNumberSum += longNumber;
+  }
+
   private static void binaryNumberOperate(String binaryNumber) {
 
     String number = binaryNumber.replace("(2)", "");
