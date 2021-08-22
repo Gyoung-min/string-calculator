@@ -10,11 +10,13 @@ public class App {
   private static long decimalNumberSum = 0;
   private static long octalNumberSum = 0;
   private static long binaryNumberSum = 0;
+  private static long totalSum = 0;
 
   public static void main(String[] args) {
 
     final Scanner get = new Scanner(System.in);
     final String getOperator = get.next();
+    final String getNotation = get.next();
 
     final List<String> expression = new ArrayList<>(Arrays.asList(getOperator.split("\\+")));
 
@@ -32,13 +34,28 @@ public class App {
         numberSumOperate(expression.get(i));
       }
     }
-    System.out.println(romanNumberSum + decimalNumberSum + octalNumberSum + binaryNumberSum);
+    totalSum = permuteNotation(getNotation, romanNumberSum + decimalNumberSum + octalNumberSum + binaryNumberSum);
+    System.out.println(totalSum+"("+getNotation+")");
+  }
+
+  private static long permuteNotation(String getNotation, long totalSumNumber) {
+
+    if (getNotation.equals("8")) {
+
+      long totalOctalLongNumberSum = Long.parseLong(Long.toOctalString(totalSumNumber));
+
+      return totalOctalLongNumberSum;
+
+    }
+
+    return totalSumNumber;
   }
 
   private static void numberSumOperate(String number) {
 
     long longNumber = Long.parseLong(number);
     binaryNumberSum += longNumber;
+
   }
 
   private static void binaryNumberOperate(String binaryNumber) {
@@ -46,6 +63,7 @@ public class App {
     String number = binaryNumber.replace("(2)", "");
     long binaryLongNumber = Integer.valueOf(number, 2);
     binaryNumberSum += binaryLongNumber;
+
   }
 
   private static void decimalNumberSumOperate(String decimalNumber) {
@@ -60,6 +78,7 @@ public class App {
     String number = octalNumber.replace("(8)", "");
     long octalLongNumber = Integer.valueOf(number, 8);
     octalNumberSum += octalLongNumber;
+
   }
 
   private static void romanNumberOperate(String romanNum) {
