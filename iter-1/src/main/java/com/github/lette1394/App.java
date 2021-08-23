@@ -16,8 +16,14 @@ public class App {
 
     final Scanner get = new Scanner(System.in);
     final String getOperator = get.next();
-    System.out.print("numeral-system=");
-    final String getNotation = get.next();
+    String getNotation = "10";
+    final String commendGetNotation = get.next();
+
+    if (commendGetNotation.equals("numeral-system") || commendGetNotation.equals("ns")) {
+
+      getNotation = get.next();
+
+    }
 
     final List<String> expression = new ArrayList<>(Arrays.asList(getOperator.split("\\+")));
 
@@ -36,8 +42,9 @@ public class App {
       }
     }
     totalSum = permuteNotation(getNotation, romanNumberSum + decimalNumberSum + octalNumberSum + binaryNumberSum);
-    System.out.println(totalSum+"("+getNotation+")");
+    System.out.println(totalSum + "(" + getNotation + ")");
   }
+
   private static long permuteNotation(String getNotation, long totalSumNumber) {
 
     if (getNotation.equals("8")) {
@@ -50,6 +57,7 @@ public class App {
 
     return totalSumNumber;
   }
+
   private static void numberSumOperate(String number) {
 
     long longNumber = Long.parseLong(number);
