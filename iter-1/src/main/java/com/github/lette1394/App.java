@@ -20,10 +20,13 @@ public class App {
     final String commendGetNotation = get.next();
 
     if (commendGetNotation.equals("numeral-system") || commendGetNotation.equals("ns")) {
-
+      System.out.print(commendGetNotation+"=");
       getNotation = get.next();
 
     }
+
+    System.out.print("format=");
+    final String format = get.next();
 
     final List<String> expression = new ArrayList<>(Arrays.asList(getOperator.split("\\+")));
 
@@ -41,8 +44,15 @@ public class App {
         numberSumOperate(expression.get(i));
       }
     }
+    if(format.equals("short")){
     totalSum = permuteNotation(getNotation, romanNumberSum + decimalNumberSum + octalNumberSum + binaryNumberSum);
     System.out.println(totalSum + "(" + getNotation + ")");
+    }
+    if(format.equals("long")){
+      totalSum = permuteNotation(getNotation, romanNumberSum + decimalNumberSum + octalNumberSum + binaryNumberSum);
+      System.out.println("result: "+totalSum);
+      System.out.println(commendGetNotation+": " + getNotation);
+    }
   }
 
   private static long permuteNotation(String getNotation, long totalSumNumber) {
