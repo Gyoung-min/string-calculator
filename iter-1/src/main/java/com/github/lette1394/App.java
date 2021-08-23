@@ -16,8 +16,14 @@ public class App {
 
     final Scanner get = new Scanner(System.in);
     final String getOperator = get.next();
-    System.out.print("numeral-system=");
-    final String getNotation = get.next();
+    String getNotation = "10";
+    final String commendGetNotation = get.next();
+
+    if(commendGetNotation.equals("numeral-system")||commendGetNotation.equals("ns")) {
+
+      getNotation = get.next();
+
+    }
 
     final List<String> expression = new ArrayList<>(Arrays.asList(getOperator.split("\\+")));
 
